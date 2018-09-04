@@ -1,0 +1,63 @@
+[user]
+    name = Manish Mehra
+    email = mmehra@versa-networks.com
+[diff]
+    tool = tkdiff
+[difftool]
+    prompt = no
+[alias]
+    ci = commit --verbose
+    ca = commit --amend --verbose --no-verify
+    cn = commit --verbose --no-verify
+    cp = cherry-pick
+    st = status
+    co = checkout
+    br = branch
+    dt = difftool
+    ls = stash list
+    la = log --pretty=\"format:%cd %d (%an - %h): %s\" --date=short
+    mine = log --pretty=\"format:%cd %d (%an - %h): %s\" --date=short --author=mmehra
+    dif = diff HEAD
+    oneline = log --pretty=oneline
+    stash-unapply = !git stash show -p | git apply -R
+    undo-commit = reset --soft HEAD^
+    assume   = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+    edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+    add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+    brdiff = "!f() { git log --cherry-pick --left-right --oneline origin/$1...origin/$2 ; }; f"
+    left   = "!f() { git log --cherry-pick --left-only  --pretty=oneliner origin/$1...origin/$2 ; }; f"
+    right  = "!f() { git log --cherry-pick --right-only --pretty=oneliner origin/$1...origin/$2 ; }; f"
+    alias = config --get-regexp 'alias.*'
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+[color "diff"]
+    meta = yellow
+    frag = magenta
+    old = red
+    new = green
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+[push]
+    default = current
+[sendemail]
+    from = mmehra@versa-networks.com
+    smtpuser = mmehra@versa-networks.com
+    smtpserver = smtp.gmail.com
+    smtppass = azynmezwqlbogwsy
+    chainreplyto = false
+    smtpencryption = tls
+    smtpserverport = 587
+[branch]
+    autosetuprebase = always
+[reviewboard]
+	url = http://review.versa-networks.com
+[pretty]
+	oneliner = %h  %<(20)%aN  %s
+[fetch]
+	prune = true

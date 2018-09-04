@@ -1,0 +1,3 @@
+set line-graphics = yes
+bind main ! !git revert %(commit) 
+set commit-order = date
